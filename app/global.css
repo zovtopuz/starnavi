@@ -1,0 +1,12 @@
+div.react-flow-handle {
+  --color: #FFD700;
+  width: 30px;
+  height: 5px;
+  background-color: var(--color);
+  border-radius: 2px;
+  border: none;
+  border-bottom: 10px solid var(--color);
+  border-right: 40px solid var(--color);
+  border-left: 40px solid var(--color);
+
+}

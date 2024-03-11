@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useLoadOnScroll } from "./useLoadOnScroll";
 import { lazyLoadFetch } from "@/utils/lazyLoadFetch.util";
-import { IGetAllPeopleResponse, getPeople } from "@/fetch/GET/getPeople.GET";
+import { IGetAllPeopleResponse, getPeople } from "@/fetch/GET/getPeople";
 
 export const getAllPeople = (search: string = '') => {
   const [data, setData] = useState<IPersonData>();
