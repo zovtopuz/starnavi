@@ -9,7 +9,6 @@ import { INode, NodeType } from "./nodeEdgeBuilder/types";
 interface Props {
   initialNodes: INode[];
   initialEdges: Edge[];
-  allData: any;
 }
 const nodeTypes = {
   [NodeType.AHEAD]: CustomNode,
@@ -18,9 +17,7 @@ const nodeTypes = {
   [NodeType.PERSONA_DETAILS]: PersonDetail,
 };
 
-export const FlowArea = ({ initialNodes, initialEdges, allData }: Props) => {
-  console.log(allData);
-
+export const FlowArea = ({ initialNodes, initialEdges }: Props) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
