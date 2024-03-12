@@ -13,18 +13,13 @@ export default async function PeoplePage({ params }: Props) {
   // check if index equal -1 and redirect to main page
   if (index === PARAMS_NOT_A_NUMBER) redirect('/');
 
-  const { nodes, edges } = await getAllDataByIndex(index)
-    .then(({ people, films, starships }) => {
-      const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
-      return nodesAndEdges;
-    }).catch(() => {
-      redirect('/');
-    });
+  const { people, films, starships } = await getAllDataByIndex(index)
 
   return <>
     <FlowArea
-      initialNodes={nodes}
-      initialEdges={edges}
+      people={people}
+      films={films}
+      starships={starships}
     />
   </>
 }
