@@ -1,6 +1,6 @@
 export const sortByField = <T,>(array: T[], field?: keyof T) => {
   if (field) {
-    return { ...array }.sort((a, b) => {
+    return [...array].sort((a, b) => {
       if (a[field] && b[field] && typeof a[field] === 'number' && typeof b[field] === 'number') {
         return Number(a[field]) - Number(b[field]);
       }
