@@ -21,6 +21,6 @@ export const getAllDataByIndex = async (index: number) => {
     return { films, starships, people };
   } catch (error) {
     console.error("Error fetching data:", error);
-    redirect('/');
+    // redirect('/');
   }
 };
