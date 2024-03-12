@@ -1,0 +1,46 @@
+name: CI/CD
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    #  Init environment 
+    - name: 🛠️ SETUP Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        registry-url: 'https://registry.npmjs.org'
+          
+    # Install node_modules
+    - name: ⬇️ INSTALL DEPENDENCIES (npm)
+      run: npm install && npm install turbo --global
+
+    # Run jest tests
+    - name: 🧪 RUN TEST (npm)
+      run: npm run test
+
+    # Run jest tests
+    - name: 🧱 RUN BUILD (npm)
+      run: npm run build-turbo
+
+    - name: ⬇️ INSTALL Vercel CLI
+      run: npm install --global vercel@latest
+
+    - name: ⬇️ PULL Vercel ENVIRONMENT INFORMATION (vercel)
+      run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: 🧱 BUILD PROJECT ARTIFACTS (vercel)
+      run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: ✅ DEPLOY PROJECT ARTIFACTS TO Vercel (vercel)
+      run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
