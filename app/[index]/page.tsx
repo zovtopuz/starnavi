@@ -27,8 +27,8 @@ export default async function PeoplePage({ params }: Props) {
 
   return <>
     <FlowArea
-      initialNodes={[]}
-      initialEdges={[]}
+      initialNodes={nodes}
+      initialEdges={edges}
       allData={{ people, films, starships, nodes, edges }}
     />
   </>
