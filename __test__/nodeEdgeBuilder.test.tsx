@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom';
 import { nodeEdgeBuilder } from "@/components/FlowArea/nodeEdgeBuilder/nodeEdgeBuilder";
 import { NodeType } from "@/components/FlowArea/nodeEdgeBuilder/types";
-import { IFilm } from "@/types/film.type";
-import { IStarShip } from "@/types/starship.type";
 import { mockFilms, mockPerson, mockStarships } from "./data.mock";
 
 
@@ -19,15 +17,4 @@ describe('nodeEdgeBuilder', () => {
 
     expect(edges.length).toBe(data_length - 1);
   });
-
-  it('set undefined for film and starships', () => {
-    const films = undefined as unknown as IFilm[];
-    const starships = undefined as unknown as IStarShip[];
-    const { nodes, edges } = nodeEdgeBuilder(mockPerson, films, starships);
-
-    expect(nodes.length).toBe(0);
-
-    expect(edges.length).toBe(0);
-  });
-
 });

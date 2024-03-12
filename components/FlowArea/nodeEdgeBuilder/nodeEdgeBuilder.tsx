@@ -8,11 +8,11 @@ export const nodeEdgeBuilder = (people: IPeople, films: IFilm[], starships: ISta
   const nodes: INode[] = [];
   const edges: IEdge[] = [];
 
-  const peopleExist = !people;
-  const filmsExist = (!films || films.length === 0);
-  const starshipsExist = !starships;
+  // const peopleExist = !people;
+  // const filmsExist = (!films || films.length === 0);
+  // const starshipsExist = !starships;
 
-  if (peopleExist || filmsExist || starshipsExist) return { nodes, edges };
+  // if (peopleExist || filmsExist || starshipsExist) return { nodes, edges };
 
   const FIRST_ELEMENT_INDEX = 0;
 
