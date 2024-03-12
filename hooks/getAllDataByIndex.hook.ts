@@ -19,16 +19,14 @@ export const getAllDataByIndex = async (index: number) => {
 
     return filmsAndStarships
   }
-  const nodesAndEdges = await getPeopleByIndex(index)
+  const data = await getPeopleByIndex(index)
     .then(async ({ data: people }) => {
-      const { films, starships } = await getFilmsAndStarship(people);
-
-      const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
-      return nodesAndEdges
+      const filmsAndStarships = await getFilmsAndStarship(people);
+      return { ...filmsAndStarships, people }
     })
     .catch(() => {
       redirect('/');
-    })
+    });
 
-  return nodesAndEdges
+  return data
 }

@@ -2,6 +2,7 @@ import { FlowArea } from "@/components/FlowArea/FlowArea";
 import { toNumber } from "@/utils/toNumber.util";
 import { redirect } from "next/navigation";
 import { getAllDataByIndex } from "@/hooks/getAllDataByIndex.hook";
+import { nodeEdgeBuilder } from "@/components/FlowArea/nodeEdgeBuilder/nodeEdgeBuilder";
 
 interface Props {
   params: Record<string, string>;
@@ -12,7 +13,11 @@ export default async function PeoplePage({ params }: Props) {
   // check if index equal -1 and redirect to main page
   if (index === PARAMS_NOT_A_NUMBER) redirect('/');
 
-  const { nodes, edges } = await getAllDataByIndex(index);
+  const { nodes, edges } = await getAllDataByIndex(index)
+    .then(({ people, films, starships }) => {
+      const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
+      return nodesAndEdges
+    });
 
   return <>
     <FlowArea
