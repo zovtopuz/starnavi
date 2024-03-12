@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev-turbo": "turbo dev",
     "build": "next build",
+    "build-turbo": "turbo type-check build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
