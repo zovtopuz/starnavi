@@ -18,6 +18,8 @@ const nodeTypes = {
 };
 
 export const FlowArea = ({ initialNodes, initialEdges }: Props) => {
+  console.log(initialNodes, initialEdges);
+  
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
