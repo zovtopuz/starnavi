@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const PeopleCard: React.FC<Props> = ({ person, lastRef }) => {
-  const index = person.url.split('/').at(-2);
+  const index = person.url.split('/').at(-2) || 1;
 
   return (
     <Link href={`/${index}/`} key={person.name} >

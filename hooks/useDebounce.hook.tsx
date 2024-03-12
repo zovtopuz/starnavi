@@ -8,7 +8,6 @@ const useDebounce = <T,>(value: T, delay: number): T => {
       setDebouncedValue(value);
     }, delay);
 
-    // Cleanup function
     return () => {
       clearTimeout(timer);
     };

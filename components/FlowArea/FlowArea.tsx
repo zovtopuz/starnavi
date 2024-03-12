@@ -2,9 +2,9 @@
 import ReactFlow, { Background, Controls, Edge, MiniMap, Node, useEdgesState, useNodesState } from "reactflow";
 import { Grid } from "@chakra-ui/react";
 import 'reactflow/dist/style.css';
-import CustomNode from "./node/custom-node/custom-node";
-import PersonDetail from "./node/person-detail-node/person-detail-node";
-import { INode, NodeType } from "./node-edge-builder/types";
+import CustomNode from "./node/CustomNode/CustomNode";
+import PersonDetail from "./node/PersonDetailNode/PersonDetailNode";
+import { INode, NodeType } from "./nodeEdgeBuilder/types";
 
 interface Props {
   initialNodes: INode[];

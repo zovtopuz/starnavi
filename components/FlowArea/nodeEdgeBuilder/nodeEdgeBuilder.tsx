@@ -7,6 +7,13 @@ import { buildPeopleDetails, calcPosition, edge, node } from "./helpers";
 export const nodeEdgeBuilder = (people: IPeople, films: IFilm[], starships: IStarShip[]) => {
   const nodes: INode[] = [];
   const edges: IEdge[] = [];
+
+  const peopleExist = !people;
+  const filmsExist = (!films || films.length === 0);
+  const starshipsExist = (!starships || starships.length === 0);
+
+  if (peopleExist || filmsExist || starshipsExist) return { nodes, edges };
+  
   const FIRST_ELEMENT_INDEX = 0;
 
   const addNodeEdge = ({ id, data, type, position, source_id }: IAddNodeEdge) => {

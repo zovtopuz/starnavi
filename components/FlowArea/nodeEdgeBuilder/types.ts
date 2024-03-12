@@ -25,4 +25,5 @@ export enum NodeType {
   BELOW = 'BELOW',
   BOTH = 'AHEAD_BELOW',
   PERSONA_DETAILS = 'PERSONA_DETAILS',
+  TESTS = 'TESTS',
 }

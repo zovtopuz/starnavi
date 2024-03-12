@@ -1,6 +1,5 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { Detail } from "./details/details";
-import { INode } from "../../node-edge-builder/types";
 import { IPeople } from "@/types/person.type";
 import { memo } from "react";
 import { NodeProps } from "reactflow";

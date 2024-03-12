@@ -1,16 +1,16 @@
 import { Box, Grid, Text } from '@chakra-ui/react';
 import React, { memo } from 'react';
 import { Handle, NodeProps, Position } from 'reactflow';
-import { ICustomData, INode, NodeType, StarWarTypeOfData, WIDTH } from '../../node-edge-builder/types';
+import { ICustomData, INode, NodeType, StarWarTypeOfData, WIDTH } from '../../nodeEdgeBuilder/types';
+
+export const emoji = {
+  [StarWarTypeOfData.PEOPLE]: '🧑‍🚀',
+  [StarWarTypeOfData.FILM]: '🎬',
+  [StarWarTypeOfData.STARSHIP]: '🚀',
+}
 
 
 function CustomNode({ data, type }: NodeProps<ICustomData>) {
-
-  const emoji = {
-    [StarWarTypeOfData.PEOPLE]: '🧑‍🚀',
-    [StarWarTypeOfData.FILM]: '🎬',
-    [StarWarTypeOfData.STARSHIP]: '🚀',
-  }
 
   return (
     <Box

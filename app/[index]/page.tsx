@@ -1,10 +1,10 @@
-import { FlowArea } from "@/components/flow-area/flow-area";
+import { FlowArea } from "@/components/FlowArea/FlowArea";
 import { getPeopleByIndex } from "@/fetch/GET/getPeopleByIndex"
 import { getFilmsByEpisodeId } from "@/fetch/GET/getFilmsByEpisodeId";
 import { toNumber } from "@/utils/toNumber.util";
 import { redirect } from "next/navigation";
 import { getStarShipsByFilms } from "@/fetch/GET/getStarShipsByFilms";
-import { nodeEdgeBuilder } from "@/components/flow-area/node-edge-builder/node-edge-builder";
+import { nodeEdgeBuilder } from "@/components/FlowArea/nodeEdgeBuilder/nodeEdgeBuilder";
 import { sortByField } from "@/utils/sortByField.util";
 
 interface Props {
@@ -16,7 +16,7 @@ export default async function PeoplePage({ params }: Props) {
   // check if index equal -1 and redirect to main page
   if (index === PARAMS_NOT_A_NUMBER) redirect('/');
 
-  const people = await getPeopleByIndex(index).then(r => r.data).catch(() =>{
+  const people = await getPeopleByIndex(index).then(r => r.data).catch(() => {
     redirect('/');
   });
 

@@ -1,6 +1,6 @@
-import { PeopleGridWrapper } from "@/components/people/grid-wrapper/grid-wrapper";
+import { PeopleGridWrapper } from "@/components/people/GridWrapper/GridWrapper";
 import { PeopleNavigation } from "@/components/people/navigation/navigation";
-import { PeopleCard } from "@/components/people/people-card/people-card";
+import { PeopleCard } from "@/components/people/PeopleCard/PeopleCard";
 import { getPeople } from "@/fetch/GET/getPeople"
 import { toNumber } from "@/utils/toNumber.util";
 

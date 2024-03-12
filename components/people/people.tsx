@@ -1,9 +1,9 @@
 'use client'
 import { LoadMoreWrapper } from "../wrapper/loading/loading.wrapper";
-import { Input, Link } from "@chakra-ui/react"
-import { PeopleCard } from "./people-card/people-card";
+import { Input,  } from "@chakra-ui/react"
+import { PeopleCard } from "./PeopleCard/PeopleCard";
 import { getAllPeople } from "@/hooks/getAllPersons.hook";
-import { PeopleGridWrapper } from "./grid-wrapper/grid-wrapper";
+import { PeopleGridWrapper } from "./GridWrapper/GridWrapper";
 import { useState } from "react";
 import useDebounce from "@/hooks/useDebounce.hook";
 
