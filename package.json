@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev-turbo": "turbo dev",
     "build": "next build",
+    "dev-turbo": "turbo dev",
     "build-turbo": "turbo type-check build",
     "start": "next start",
     "lint": "next lint",
