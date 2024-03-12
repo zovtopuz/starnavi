@@ -17,6 +17,8 @@ export default async function PeoplePage({ params }: Props) {
     .then(({ people, films, starships }) => {
       const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
       return nodesAndEdges;
+    }).catch(() => {
+      redirect('/');
     });
 
   return <>
