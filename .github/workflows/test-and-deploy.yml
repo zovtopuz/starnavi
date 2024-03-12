@@ -27,7 +27,7 @@ jobs:
   
     # Install node_modules
     - name: ⬇️ INSTALL DEPENDENCIES (npm)
-      run: npm install
+      run: npm install && npm install turbo --global
 
     # Run jest tests
     - name: 🧪 RUN TEST (npm)
