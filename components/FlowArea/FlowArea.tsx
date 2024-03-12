@@ -19,7 +19,7 @@ const nodeTypes = {
 };
 
 export const FlowArea = ({ initialNodes, initialEdges, allData }: Props) => {
-  console.log(initialNodes, initialEdges, allData);
+  console.log( allData);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);

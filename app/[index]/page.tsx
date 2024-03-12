@@ -20,16 +20,16 @@ export default async function PeoplePage({ params }: Props) {
     redirect('/');
   });
 
-  const films = await getFilmsByEpisodeId(people.films).then(({ data }) => sortByField(data.results, 'episode_id')).catch(() => []);
-  const starships = await getStarShipsByFilms(people.films, index).then(r => r.data.results).catch(() => [])
+  const films = await getFilmsByEpisodeId(people.films).then((r) => r).catch(() => []);
+  const starships = await getStarShipsByFilms(people.films, index).then(r => r).catch(() => [])
 
-  const { nodes, edges } = nodeEdgeBuilder(people, films, starships);
+  // const { nodes, edges } = nodeEdgeBuilder(people, films, starships);
 
   return <>
     <FlowArea
-      initialNodes={nodes}
-      initialEdges={edges}
-      allData={{people, films, edges}}
+      initialNodes={[]}
+      initialEdges={[]}
+      allData={{people, films, starships}}
     />
   </>
 }
