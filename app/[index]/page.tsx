@@ -1,11 +1,6 @@
 import { FlowArea } from "@/components/FlowArea/FlowArea";
-import { getPeopleByIndex } from "@/fetch/GET/getPeopleByIndex"
-import { getFilmsByEpisodeId } from "@/fetch/GET/getFilmsByEpisodeId";
 import { toNumber } from "@/utils/toNumber.util";
 import { redirect } from "next/navigation";
-import { getStarShipsByFilms } from "@/fetch/GET/getStarShipsByFilms";
-import { nodeEdgeBuilder } from "@/components/FlowArea/nodeEdgeBuilder/nodeEdgeBuilder";
-import { sortByField } from "@/utils/sortByField.util";
 import { getAllDataByIndex } from "@/hooks/getAllDataByIndex.hook";
 
 interface Props {

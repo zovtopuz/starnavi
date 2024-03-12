@@ -11,24 +11,24 @@ export const getAllDataByIndex = async (index: number) => {
     const fetchFilms = getFilmsByEpisodeId(people.films);
     const fetchStarships = getStarShipsByFilms(people.films, index);
 
-    const data = await Promise.all([fetchFilms, fetchStarships])
+    const filmsAndStarships = await Promise.all([fetchFilms, fetchStarships])
       .then(r => {
-        return { films: r[0].data.results, starships: r[1].data.results }
+        return { films: sortByField(r[0].data.results, 'episode_id'), starships: r[1].data.results }
       })
       .catch(() => ({ films: [], starships: [] }));
 
-    return data
+    return filmsAndStarships
   }
-  const { people, films, starships } = await getPeopleByIndex(index)
+  const nodesAndEdges = await getPeopleByIndex(index)
     .then(async ({ data: people }) => {
-      const filmsAndStarship = await getFilmsAndStarship(people)
-      return { ...filmsAndStarship, people }
+      const { films, starships } = await getFilmsAndStarship(people);
+
+      const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
+      return nodesAndEdges
     })
     .catch(() => {
       redirect('/');
-    });
-
-  const nodesAndEdges = nodeEdgeBuilder(people, films, starships);
+    })
 
   return nodesAndEdges
 }
