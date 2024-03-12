@@ -13,18 +13,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
+    
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+
+    #  Init environment 
+    - name: 🛠️ SETUP Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-  
+        node-version: 18
+        registry-url: 'https://registry.npmjs.org'
+          
     # Install node_modules
     - name: ⬇️ INSTALL DEPENDENCIES (npm)
       run: npm install && npm install turbo --global
