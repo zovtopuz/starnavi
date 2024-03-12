@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { getStarShipsByFilms } from "@/fetch/GET/getStarShipsByFilms";
 import { nodeEdgeBuilder } from "@/components/FlowArea/nodeEdgeBuilder/nodeEdgeBuilder";
 import { sortByField } from "@/utils/sortByField.util";
+import { getAllDataByIndex } from "@/hooks/getAllDataByIndex.hook";
 
 interface Props {
   params: Record<string, string>;
@@ -16,14 +17,7 @@ export default async function PeoplePage({ params }: Props) {
   // check if index equal -1 and redirect to main page
   if (index === PARAMS_NOT_A_NUMBER) redirect('/');
 
-  const people = await getPeopleByIndex(index).then(r => r.data).catch(() => {
-    redirect('/');
-  });
-
-  const films = await getFilmsByEpisodeId(people.films).then(({ data }) => sortByField(data.results, 'episode_id')).catch(() => []);
-  const starships = await getStarShipsByFilms(people.films, index).then(({ data }) => data.results).catch(() => [])
-
-  const { nodes, edges } = nodeEdgeBuilder(people, films, starships);
+  const { nodes, edges } = await getAllDataByIndex(index);
 
   return <>
     <FlowArea
