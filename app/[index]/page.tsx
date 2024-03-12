@@ -21,7 +21,7 @@ export default async function PeoplePage({ params }: Props) {
   });
 
   const films = await getFilmsByEpisodeId(people.films).then(({ data }) => sortByField(data.results, 'episode_id')).catch(() => []);
-  const starships = await getStarShipsByFilms(people.films, index).then(r => r.data.results).catch(() => [])
+  const starships = await getStarShipsByFilms(people.films, index).then(({ data }) => data.results).catch(() => [])
 
   const { nodes, edges } = nodeEdgeBuilder(people, films, starships);
 
