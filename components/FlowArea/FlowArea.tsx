@@ -6,17 +6,10 @@ import CustomNode from "./node/CustomNode/CustomNode";
 import PersonDetail from "./node/PersonDetailNode/PersonDetailNode";
 import { INode, NodeType } from "./nodeEdgeBuilder/types";
 import { useEffect } from "react";
-import { IPeople } from "@/types/person.type";
-import { IFilm } from "@/types/film.type";
-import { IStarShip } from "@/types/starship.type";
-import { nodeEdgeBuilder } from "./nodeEdgeBuilder/nodeEdgeBuilder";
 
 interface Props {
-  // initialNodes: INode[];
-  // initialEdges: Edge[];
-  people: IPeople;
-  films: IFilm[];
-  starships: IStarShip[];
+  initialNodes: INode[];
+  initialEdges: Edge[];
 }
 const nodeTypes = {
   [NodeType.AHEAD]: CustomNode,
@@ -25,16 +18,9 @@ const nodeTypes = {
   [NodeType.PERSONA_DETAILS]: PersonDetail,
 };
 
-export const FlowArea = ({ people, films, starships }: Props) => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
-  useEffect(() => {
-    console.log(people, films, starships);
-    const { nodes, edges } = nodeEdgeBuilder(people, films, starships);
-    setNodes(nodes)
-    setEdges(edges)
-  }, [])
+export const FlowArea = ({ initialNodes, initialEdges }: Props) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
     <Grid backgroundColor='#FFFFFF' height='calc(100dvh - 67px)' >
