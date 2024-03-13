@@ -5,7 +5,6 @@ import 'reactflow/dist/style.css';
 import CustomNode from "./node/CustomNode/CustomNode";
 import PersonDetail from "./node/PersonDetailNode/PersonDetailNode";
 import { INode, NodeType } from "./nodeEdgeBuilder/types";
-import { useEffect } from "react";
 
 interface Props {
   initialNodes: INode[];

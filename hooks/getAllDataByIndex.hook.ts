@@ -7,9 +7,11 @@ import { redirect } from "next/navigation";
 
 export const getAllDataByIndex = async (index: number) => {
   try {
+    // Get current user
     const peopleResponse = await getPeopleByIndex(index);
     const people = peopleResponse.data;
 
+    // Get all additional information in parallel
     const [filmsResponse, starshipsResponse] = await Promise.all([
       getFilmsByEpisodeId(people.films),
       getStarShipsByFilmsAndId(people.films, index)
@@ -21,7 +23,6 @@ export const getAllDataByIndex = async (index: number) => {
     return { films, starships, people };
   } catch (error) {
     console.error("Error fetching data:", error);
-    // redirect('/');
-    return { films: [], starships: [], people: {} as IPeople };
+    redirect('/');
   }
 };
