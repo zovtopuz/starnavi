@@ -1,6 +1,6 @@
 'use client'
 import { LoadMoreWrapper } from "../wrapper/loading/loading.wrapper";
-import { Input,  } from "@chakra-ui/react"
+import { Input, } from "@chakra-ui/react"
 import { PeopleCard } from "./PeopleCard/PeopleCard";
 import { getAllPeople } from "@/hooks/getAllPersons.hook";
 import { PeopleGridWrapper } from "./GridWrapper/GridWrapper";
@@ -29,7 +29,7 @@ export const People = () => {
           const addRef = index === people.length - 1 && { lastRef: lastRef };
 
           return (
-              <PeopleCard person={person} {...addRef} key={person.name} />
+            <PeopleCard person={person} {...addRef} key={person.name} />
           )
         })}
       </LoadMoreWrapper>
