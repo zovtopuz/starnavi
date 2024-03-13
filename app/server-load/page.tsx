@@ -3,6 +3,7 @@ import { PeopleNavigation } from "@/components/people/navigation/navigation";
 import { PeopleCard } from "@/components/people/PeopleCard/PeopleCard";
 import { getPeople } from "@/fetch/GET/getPeople"
 import { toNumber } from "@/utils/toNumber.util";
+import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: Record<string, string | undefined>;
@@ -11,7 +12,10 @@ const MAX_QUANTITY_PER_PAGE = 10;
 export default async function ServerLoad({ searchParams }: Props) {
   const page = toNumber(searchParams.page);
 
-  const { data: people } = await getPeople(page);
+  const { data: people } = await getPeople(page)
+    .catch(() => {
+      redirect('/server-load/')
+    });
 
   const MAX_QUANTITY_OF_PAGE = Math.ceil(people.count / MAX_QUANTITY_PER_PAGE);
 

@@ -24,6 +24,8 @@ export const PeopleNavigation = ({ page, MAX_QUANTITY_OF_PAGE = 9, START_QUANTIT
     url.append('page', `${handleIndex}`);
     return router + '?' + url.toString();
   }
+  const isNotFirstPage = page === START_QUANTITY_OF_PAGE
+  const isNotLastPage = page === MAX_QUANTITY_OF_PAGE
 
   return (
     <Grid
@@ -36,11 +38,11 @@ export const PeopleNavigation = ({ page, MAX_QUANTITY_OF_PAGE = 9, START_QUANTIT
       borderRadius={8}
     >
       <Link href={handlePage(Direction.PREV)}>
-        <Button colorScheme='yellow' variant='outline'>prev</Button>
+        <Button isDisabled={isNotFirstPage} colorScheme='yellow' variant='outline'>prev</Button>
       </Link>
 
       <Link href={handlePage(Direction.NEXT)}>
-        <Button colorScheme='yellow'>next</Button>
+        <Button isDisabled={isNotLastPage} colorScheme='yellow'>next</Button>
       </Link>
     </Grid>
   )
